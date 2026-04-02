@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Name — Academic Homepage</title>
+  <title>Yichen Wang — Academic Homepage</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
@@ -124,6 +124,42 @@
     .bio a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-light); }
     .bio a:hover { border-color: var(--accent); }
 
+    /* — Social links — */
+    .social-links {
+      margin-top: var(--space-sm);
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      display: flex;
+      gap: var(--space-md);
+      flex-wrap: wrap;
+    }
+    .social-links a {
+      color: var(--fg-faint);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .social-links a:hover { color: var(--accent); }
+
+    /* — Header layout with photo — */
+    .header-top {
+      display: flex;
+      gap: var(--space-lg);
+      align-items: flex-start;
+    }
+    .header-top .portrait {
+      width: 140px;
+      height: 140px;
+      border-radius: 8px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    .header-info { flex: 1; }
+
+    @media (max-width: 600px) {
+      .header-top { flex-direction: column; align-items: center; text-align: center; }
+      .header-top .portrait { width: 120px; height: 120px; }
+    }
+
     /* — Navigation — */
     nav {
       margin-top: var(--space-lg);
@@ -143,7 +179,7 @@
       transition: color 0.2s;
     }
     nav a::before {
-      content: '⤷';
+      content: '\2937';
       margin-right: 0.3em;
       opacity: 0.5;
     }
@@ -274,6 +310,7 @@
       font-size: 0.75rem;
       color: var(--fg-faint);
     }
+    footer a { color: var(--fg-faint); }
 
     /* — Responsive — */
     @media (max-width: 600px) {
@@ -286,28 +323,46 @@
 <body>
   <div class="container">
 
-    <!-- ═══════════════════════════════════════════
-         HEADER — Replace with your own info
-    ════════════════════════════════════════════ -->
     <header>
-      <div class="name">Your Name</div>
+      <div class="header-top">
+        <img src="/public/img/portrait.jpg" alt="Yichen Wang" class="portrait">
+        <div class="header-info">
+      <div class="name">Yichen Wang</div>
       <div class="affiliation">
-        <a href="#">Department of Your Field</a>, <a href="#">Your University</a><br>
-        Building Name, Room 000
+        <a href="https://www.uchicago.edu/">The University of Chicago</a><br>
+        PhD Program in Computational Neuroscience<br>
+        <a href="https://neuroscience.uchicago.edu/GrossmanCenter">Grossman Center for Quantitative Biology and Human Behavior</a><br>
+        <a href="https://neurobiology.uchicago.edu/">Department of Neurobiology</a><br>
+        5812 South Ellis Ave. MC 0912, Suite P-400<br>
+        Chicago, IL 60637
       </div>
-      <!-- Email is reversed for spam protection, same technique as the original -->
-      <div class="email">ude.ytisrevinu@emanruoy</div>
+      <!-- Email is reversed for spam protection -->
+      <div class="email">ude.ogacihcu@wnehciy</div>
+        </div><!-- /.header-info -->
+      </div><!-- /.header-top -->
       <p class="bio">
-        I am a researcher in the <a href="#">Lab/Center Name</a> studying
-        [your research area]. My work focuses on [brief description of your
-        research interests]. Supported in part by [funding source]
-        <a href="#">grant #0000000</a>.
+        I study how a nervous system interacts with our physical world, advised by
+        <a href="https://neurobiology.uchicago.edu/faculty/brent-doiron-phd">Dr. Brent Doiron</a>
+        and collaborating with
+        <a href="https://www.samuelmuscinelli.com/">Dr. Samuel Muscinelli</a>.
+        Previously, I worked at the
+        <a href="https://www.simonsfoundation.org/flatiron/center-for-computational-neuroscience/">Flatiron Institute</a>
+        with <a href="https://sites.google.com/site/sueyeonchung">Dr. SueYeon Chung</a>.
+        I received my undergraduate degree in Physics and Mathematics from UCLA.
       </p>
+
+      <div class="social-links">
+        <a href="https://scholar.google.com/citations?user=xT3P8PsAAAAJ&hl=en" target="_blank">Google Scholar</a>
+        <a href="https://github.com/yuesha-yc" target="_blank">GitHub</a>
+        <a href="https://x.com/yichenwang03" target="_blank">X</a>
+        <a href="https://bsky.app/profile/yichenwang.bsky.social" target="_blank">Bluesky</a>
+        <a href="https://www.linkedin.com/in/yichen-wang-4750461bb/" target="_blank">LinkedIn</a>
+      </div>
 
       <nav>
         <a href="#publications">publications</a>
+        <a href="#posters">posters</a>
         <a href="#code">code</a>
-        <a href="#teaching">teaching</a>
       </nav>
     </header>
 
@@ -315,46 +370,56 @@
          PUBLICATIONS
     ════════════════════════════════════════════ -->
     <section id="publications">
-      <h2>Publications <a href="https://scholar.google.com/" target="_blank">(Google Scholar)</a></h2>
+      <h2>Publications <a href="https://scholar.google.com/citations?user=xT3P8PsAAAAJ&hl=en" target="_blank">(Google Scholar)</a></h2>
 
       <div class="pub">
-        <div class="pub-authors">A. Author, B. Coauthor &amp; <strong>Your Name</strong> (2025).</div>
-        <div class="pub-title">Title of your most recent paper.</div>
-        <div class="pub-venue">Nature Neuroscience <strong>28</strong>(12): 100–115.</div>
+        <div class="pub-authors">Chi-Ning Chou*, Hang Le*, <strong>Yichen Wang</strong> &amp; SueYeon Chung (2025).</div>
+        <div class="pub-title">Feature Learning beyond the Lazy-Rich Dichotomy: Insights from Representational Geometry.</div>
+        <div class="pub-venue">International Conference on Machine Learning (ICML) 2025.</div>
         <div class="pub-links">
-          [ <a href="#">journal</a> <span class="sep">|</span> <a href="#">pdf</a> <span class="sep">|</span> <a href="#">bib</a> ]
+          [ <a href="https://arxiv.org/abs/2503.18114" target="_blank">arXiv</a> <span class="sep">|</span> <a href="https://icml.cc/virtual/2025/poster/44480" target="_blank">conference</a> ]
         </div>
+        <div class="pub-note">Spotlight Presentation.</div>
+      </div>
+
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         POSTERS
+    ════════════════════════════════════════════ -->
+    <section id="posters">
+      <h2>Posters</h2>
+
+      <div class="pub">
+        <div class="pub-authors">Chi-Ning Chou*, Hang Le*, <strong>Yichen Wang</strong> &amp; SueYeon Chung (2024).</div>
+        <div class="pub-title">Understanding Feature Learning in Neural Networks via Manifold Capacity and Effective Geometry.</div>
+        <div class="pub-venue">Cognitive and Computational Neuroscience Conference (CCN) 2024.</div>
       </div>
 
       <div class="pub">
-        <div class="pub-authors"><strong>Your Name</strong> &amp; C. Collaborator (2024).</div>
-        <div class="pub-title">Another important paper title goes here.</div>
-        <div class="pub-venue">eLife <strong>13</strong>: e00000.</div>
-        <div class="pub-links">
-          [ <a href="#">journal</a> <span class="sep">|</span> <a href="#">pdf</a> <span class="sep">|</span> <a href="#">bioRxiv</a> ]
-        </div>
-        <div class="pub-note">Commentary by D. Scholar &amp; E. Expert.</div>
+        <div class="pub-authors"><strong>Yichen Wang</strong>, Chi-Ning Chou, Artem Kirsanov &amp; SueYeon Chung (2024).</div>
+        <div class="pub-title">Studying How Neural Networks Learn Computationally Hierarchical Representations Using Manifold Capacity.</div>
+        <div class="pub-venue">Flatiron Institute Summer Poster Session 2024.</div>
       </div>
 
       <div class="pub">
-        <div class="pub-authors">D. Student, <strong>Your Name</strong> &amp; F. Advisor (2023).</div>
-        <div class="pub-title">A third paper with a descriptive title.</div>
-        <div class="pub-venue">Physical Review Letters <strong>131</strong>(11): 118401.</div>
-        <div class="pub-links">
-          [ <a href="#">journal</a> <span class="sep">|</span> <a href="#">pdf</a> <span class="sep">|</span> <a href="#">arXiv</a> ]
-        </div>
+        <div class="pub-authors"><strong>Yichen Wang</strong>, Chi-Ning Chou &amp; SueYeon Chung (2023).</div>
+        <div class="pub-title">Exploring the Geometry of Neural Manifolds with Latent Structures.</div>
+        <div class="pub-venue">Flatiron Institute Summer Poster Session 2023.</div>
       </div>
 
       <div class="pub">
-        <div class="pub-authors"><strong>Your Name</strong> (2020).</div>
-        <div class="pub-title"><em>Your Ph.D. Thesis Title.</em></div>
-        <div class="pub-venue">Ph.D. thesis, Your University.</div>
-        <div class="pub-links">
-          [ <a href="#">pdf</a> <span class="sep">|</span> <a href="#">link</a> ]
-        </div>
+        <div class="pub-authors">Y. Wang, S. Brosler, P. Ahmadi, T. Kuli&#324;ski, S. Sarkar, T. Suresh &amp; H. Yan (2022).</div>
+        <div class="pub-title">Frequency specific features representing categorical face perception.</div>
+        <div class="pub-venue">Neuromatch Academy Computational Neuroscience Summer Program 2022.</div>
       </div>
 
-      <!-- Add more .pub blocks as needed -->
+      <div class="pub">
+        <div class="pub-authors">Y. Wang, G. Ordonez, D. Murillo, A. Gutierrez, C. Chavez, D. Espino, M. Khosla, K. Tsujimoto, A. Blaisdell &amp; K. Arisaka (2022).</div>
+        <div class="pub-title">Correlation between alpha wave frequency and eccentricity dependent reaction time.</div>
+        <div class="pub-venue">UCLA Undergraduate Research Week 2022.</div>
+      </div>
+
     </section>
 
     <!-- ═══════════════════════════════════════════
@@ -363,50 +428,13 @@
     <section id="code">
       <h2>Code</h2>
 
-      <div class="code-entry">
-        <span class="year">2025</span>
-        Analysis tools for [project]. [ <a href="https://github.com/yourusername/repo" target="_blank">github</a> ]
-      </div>
-
-      <div class="code-entry">
-        <span class="year">2023</span>
-        Model code from <a href="#publications">Author et al. (2023)</a>. [ <a href="#">download</a> ]
-      </div>
-
-      <div class="code-entry">
-        <span class="year">2020</span>
-        Simulation framework from <a href="#publications">Your Name &amp; Collaborator (2020)</a>. [ <a href="https://github.com/yourusername/repo2" target="_blank">github</a> ]
-      </div>
-
-      <p style="margin-top: var(--space-md); font-family: var(--sans); font-size: 0.82rem; color: var(--fg-faint);">
-        Code is written in <a href="https://python.org" style="color: var(--fg-faint);">Python</a> and <a href="https://julialang.org" style="color: var(--fg-faint);">Julia</a>.
+      <p style="font-family: var(--sans); font-size: 0.88rem; color: var(--fg-dim);">
+        See <a href="https://github.com/yuesha-yc" target="_blank" style="color: var(--accent);">GitHub</a> for projects and code.
       </p>
     </section>
 
-    <!-- ═══════════════════════════════════════════
-         TEACHING
-    ════════════════════════════════════════════ -->
-    <section id="teaching">
-      <h2>Teaching</h2>
-
-      <div class="course">
-        <a href="#">Course Name 101</a>
-        <span class="detail"> — with Co-instructor; Your University, offered yearly</span>
-      </div>
-
-      <div class="course">
-        <a href="#">Advanced Topics in Your Field</a>
-        <span class="detail"> — Your University, Spring 2024</span>
-      </div>
-
-      <div class="course">
-        <a href="#">Introductory Methods Course</a>
-        <span class="detail"> — Previous University, Fall 2020</span>
-      </div>
-    </section>
-
     <footer>
-      &copy; 2026 Your Name. Hosted on <a href="https://pages.github.com" style="color: var(--fg-faint);">GitHub Pages</a>.
+      &copy; 2026 Yichen Wang. Hosted on <a href="https://pages.github.com">GitHub Pages</a>.
     </footer>
 
   </div>
