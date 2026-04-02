@@ -49,7 +49,7 @@
       color: var(--fg);
       background: var(--bg);
       line-height: 1.7;
-      font-size: 16px;
+      font-size: 20px;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -301,6 +301,38 @@
       color: var(--fg-faint);
     }
 
+    /* — Expandable abstract/bibtex — */
+    .pub-links a.toggle-btn { cursor: pointer; }
+    .pub-abstract, .pub-bibtex {
+      display: none;
+      margin-top: var(--space-sm);
+      padding: var(--space-sm) var(--space-md);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-size: 0.82rem;
+      line-height: 1.6;
+      color: var(--fg-dim);
+    }
+    .pub-abstract.open, .pub-bibtex.open { display: block; }
+    .pub-abstract { font-family: var(--serif); }
+    .pub-bibtex pre {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      white-space: pre-wrap;
+      word-break: break-all;
+      margin: 0;
+    }
+    .pub-bibtex .copy-notice {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      color: var(--accent);
+      margin-top: 4px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .pub-bibtex .copy-notice.show { opacity: 1; }
+
     /* — Footer — */
     footer {
       margin-top: var(--space-xl);
@@ -375,9 +407,21 @@
         <div class="pub-title">Feature Learning beyond the Lazy-Rich Dichotomy: Insights from Representational Geometry.</div>
         <div class="pub-venue">International Conference on Machine Learning (ICML) 2025.</div>
         <div class="pub-links">
-          [ <a href="https://arxiv.org/abs/2503.18114" target="_blank">arXiv</a> <span class="sep">|</span> <a href="https://icml.cc/virtual/2025/poster/44480" target="_blank">conference</a> ]
+          [ <a href="https://arxiv.org/abs/2503.18114" target="_blank">arXiv</a> <span class="sep">|</span> <a href="https://icml.cc/virtual/2025/poster/44480" target="_blank">conference</a> <span class="sep">|</span> <a class="toggle-btn" onclick="toggleExpand(this, 'abstract')">abstract</a> <span class="sep">|</span> <a class="toggle-btn" onclick="toggleExpand(this, 'bibtex')">bibtex</a> ]
         </div>
         <div class="pub-note">Spotlight Presentation.</div>
+        <div class="pub-abstract">
+          Integrating task-relevant information into neural representations is a fundamental ability of both biological and artificial intelligence systems. Recent theories have categorized learning into two regimes: the rich regime, where neural networks actively learn task-relevant features, and the lazy regime, where networks behave like random feature models. Yet this simple lazy-rich dichotomy overlooks a diverse underlying taxonomy of feature learning, shaped by differences in learning algorithms, network architectures, and data properties. To address this gap, we introduce an analysis framework to study feature learning via the geometry of neural representations. Rather than inspecting individual learned features, we characterize how task-relevant representational manifolds evolve throughout the learning process. We show, in both theoretical and empirical settings, that as networks learn features, task-relevant manifolds untangle, with changes in manifold geometry revealing distinct learning stages and strategies beyond the lazy-rich dichotomy. This framework provides novel insights into feature learning across neuroscience and machine learning, shedding light on structural inductive biases in neural circuits and the mechanisms underlying out-of-distribution generalization.
+        </div>
+        <div class="pub-bibtex">
+          <pre>@inproceedings{chou2025feature,
+  title={Feature Learning beyond the Lazy-Rich Dichotomy: Insights from Representational Geometry},
+  author={Chou, Chi-Ning and Le, Hang and Wang, Yichen and Chung, SueYeon},
+  booktitle={International Conference on Machine Learning (ICML)},
+  year={2025}
+}</pre>
+          <div class="copy-notice">Copied to clipboard!</div>
+        </div>
       </div>
 
     </section>
@@ -436,5 +480,27 @@
     </footer>
 
   </div>
+  <script>
+    function toggleExpand(btn, type) {
+      var pub = btn.closest('.pub');
+      var target = pub.querySelector('.pub-' + type);
+      var isOpen = target.classList.contains('open');
+      // close all open panels in this pub
+      pub.querySelectorAll('.pub-abstract, .pub-bibtex').forEach(function(el) {
+        el.classList.remove('open');
+      });
+      if (!isOpen) {
+        target.classList.add('open');
+        if (type === 'bibtex') {
+          var text = target.querySelector('pre').textContent;
+          navigator.clipboard.writeText(text).then(function() {
+            var notice = target.querySelector('.copy-notice');
+            notice.classList.add('show');
+            setTimeout(function() { notice.classList.remove('show'); }, 2000);
+          });
+        }
+      }
+    }
+  </script>
 </body>
 </html>
