@@ -3,507 +3,190 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Yichen Wang — Academic Homepage</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <title>Yichen Wang</title>
   <style>
-    :root {
-      --fg: #1a1a1a;
-      --fg-dim: #555;
-      --fg-faint: #888;
-      --bg: #faf9f6;
-      --bg-card: #fff;
-      --accent: #800000;
-      --accent-light: #e0c8c8;
-      --border: #e0ddd8;
-      --serif: 'Source Serif 4', Georgia, serif;
-      --sans: 'DM Sans', system-ui, sans-serif;
-      --mono: 'JetBrains Mono', 'Consolas', monospace;
-      --max-w: 740px;
-      --space-xs: 0.25rem;
-      --space-sm: 0.5rem;
-      --space-md: 1rem;
-      --space-lg: 2rem;
-      --space-xl: 3.5rem;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --fg: #e4e0db;
-        --fg-dim: #a09a92;
-        --fg-faint: #6e6860;
-        --bg: #161412;
-        --bg-card: #1e1c19;
-        --accent: #c06060;
-        --accent-light: #3a2020;
-        --border: #2e2a26;
-      }
-    }
-
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
-
     body {
-      font-family: var(--serif);
-      color: var(--fg);
-      background: var(--bg);
-      line-height: 1.7;
-      font-size: 20px;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* — Grain overlay — */
-    body::after {
-      content: '';
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      opacity: 0.035;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-      background-size: 180px;
-    }
-
-    /* — Layout — */
-    .container {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding: var(--space-xl) var(--space-lg);
-    }
-
-    /* — Header — */
-    header {
-      margin-bottom: var(--space-xl);
-      padding-bottom: var(--space-lg);
-      border-bottom: 1px solid var(--border);
-      animation: fadeUp 0.6s ease both;
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(12px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .name {
-      font-size: 2rem;
-      font-weight: 600;
-      letter-spacing: -0.03em;
-      line-height: 1.2;
-      margin-bottom: var(--space-sm);
-    }
-
-    .affiliation {
-      font-family: var(--sans);
-      font-size: 0.88rem;
-      color: var(--fg-dim);
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 14px;
       line-height: 1.6;
+      color: #222;
+      background: #fff;
+      max-width: 680px;
+      margin: 40px auto;
+      padding: 0 20px;
     }
-
-    .affiliation a {
-      color: var(--fg-dim);
-      text-decoration-color: var(--border);
-      transition: color 0.2s;
+    a { color: #800000; }
+    h1 {
+      font-size: 1.1em;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 4px;
+      margin-top: 2em;
     }
-    .affiliation a:hover { color: var(--accent); }
-
-    .email {
-      font-family: var(--mono);
-      font-size: 0.82rem;
-      color: var(--fg-faint);
-      margin-top: var(--space-xs);
-      unicode-bidi: bidi-override;
-      direction: rtl;
-      display: inline-block;
-    }
-
-    .bio {
-      margin-top: var(--space-md);
-      font-size: 0.95rem;
-      color: var(--fg-dim);
-    }
-    .bio a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-light); }
-    .bio a:hover { border-color: var(--accent); }
-
-    /* — Social links — */
-    .social-links {
-      margin-top: var(--space-sm);
-      font-family: var(--sans);
-      font-size: 0.82rem;
-      display: flex;
-      gap: var(--space-md);
-      flex-wrap: wrap;
-    }
-    .social-links a {
-      color: var(--fg-faint);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .social-links a:hover { color: var(--accent); }
-
-    /* — Header layout with photo — */
     .header-top {
       display: flex;
-      gap: var(--space-lg);
+      gap: 24px;
       align-items: flex-start;
     }
-    .header-top .portrait {
-      width: 140px;
-      height: 140px;
-      border-radius: 8px;
+    .header-top img {
+      width: 130px;
+      height: 130px;
       object-fit: cover;
-      flex-shrink: 0;
     }
     .header-info { flex: 1; }
-
-    @media (max-width: 600px) {
-      .header-top { flex-direction: column; align-items: center; text-align: center; }
-      .header-top .portrait { width: 120px; height: 120px; }
-    }
-
-    /* — Navigation — */
-    nav {
-      margin-top: var(--space-lg);
-      display: flex;
-      gap: var(--space-lg);
-      font-family: var(--sans);
-      font-size: 0.85rem;
-      font-weight: 500;
-    }
-
-    nav a {
-      color: var(--fg-faint);
-      text-decoration: none;
-      text-transform: lowercase;
-      letter-spacing: 0.04em;
-      position: relative;
-      transition: color 0.2s;
-    }
-    nav a::before {
-      content: '\2937';
-      margin-right: 0.3em;
-      opacity: 0.5;
-    }
-    nav a:hover { color: var(--accent); }
-
-    /* — Sections — */
-    section {
-      margin-bottom: var(--space-xl);
-      animation: fadeUp 0.6s ease both;
-    }
-    section:nth-child(2) { animation-delay: 0.1s; }
-    section:nth-child(3) { animation-delay: 0.2s; }
-    section:nth-child(4) { animation-delay: 0.3s; }
-
-    h2 {
-      font-family: var(--sans);
-      font-size: 0.78rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--fg-faint);
-      margin-bottom: var(--space-lg);
-      padding-bottom: var(--space-sm);
-      border-bottom: 1px solid var(--border);
-    }
-
-    h2 a {
-      color: inherit;
-      text-decoration: none;
-      font-weight: 400;
-      margin-left: 0.5em;
-      font-size: 0.9em;
-      opacity: 0.7;
-    }
-    h2 a:hover { color: var(--accent); }
-
-    /* — Publication entries — */
-    .pub {
-      margin-bottom: var(--space-lg);
-      padding-left: var(--space-md);
-      border-left: 2px solid transparent;
-      transition: border-color 0.25s;
-    }
-    .pub:hover { border-left-color: var(--accent); }
-
-    .pub-authors {
-      font-family: var(--sans);
-      font-size: 0.84rem;
-      color: var(--fg-dim);
-    }
-
-    .pub-title {
-      font-weight: 400;
-      font-size: 0.95rem;
-      margin-top: 2px;
-    }
-
-    .pub-venue {
-      font-style: italic;
-      font-size: 0.88rem;
-      color: var(--fg-dim);
-    }
-
-    .pub-links {
-      margin-top: 4px;
-      font-family: var(--mono);
-      font-size: 0.73rem;
-      letter-spacing: 0.02em;
-    }
-
-    .pub-links a {
-      color: var(--accent);
-      text-decoration: none;
-      margin-right: 0.3em;
-      transition: opacity 0.2s;
-    }
-    .pub-links a:hover { opacity: 0.7; }
-    .pub-links .sep { color: var(--fg-faint); margin: 0 0.15em; }
-
-    .pub-note {
-      font-family: var(--sans);
-      font-size: 0.78rem;
-      color: var(--fg-faint);
-      margin-top: 3px;
-    }
-
-    /* — Code section — */
-    .code-entry {
-      margin-bottom: var(--space-md);
-      font-size: 0.9rem;
-    }
-    .code-entry .year {
-      font-family: var(--mono);
-      font-size: 0.78rem;
-      color: var(--fg-faint);
-      margin-right: 0.5em;
-    }
-    .code-entry a {
-      color: var(--accent);
-      text-decoration: none;
-      border-bottom: 1px solid var(--accent-light);
-    }
-    .code-entry a:hover { border-color: var(--accent); }
-
-    /* — Courses — */
-    .course {
-      margin-bottom: var(--space-sm);
-      font-size: 0.9rem;
-    }
-    .course a {
-      color: var(--accent);
-      text-decoration: none;
-      border-bottom: 1px solid var(--accent-light);
-    }
-    .course a:hover { border-color: var(--accent); }
-    .course .detail {
-      font-family: var(--sans);
-      font-size: 0.8rem;
-      color: var(--fg-faint);
-    }
-
-    /* — Expandable abstract/bibtex — */
-    .pub-links a.toggle-btn { cursor: pointer; }
+    p { margin: 0.8em 0; }
+    small a { margin-right: 2px; }
     .pub-abstract, .pub-bibtex {
       display: none;
-      margin-top: var(--space-sm);
-      padding: var(--space-sm) var(--space-md);
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      font-size: 0.82rem;
-      line-height: 1.6;
-      color: var(--fg-dim);
+      margin: 6px 0;
+      padding: 8px 12px;
+      background: #f7f7f7;
+      border: 1px solid #e0e0e0;
+      font-size: 0.92em;
+      line-height: 1.5;
     }
     .pub-abstract.open, .pub-bibtex.open { display: block; }
-    .pub-abstract { font-family: var(--serif); }
     .pub-bibtex pre {
-      font-family: var(--mono);
-      font-size: 0.72rem;
+      font-family: monospace;
+      font-size: 0.9em;
       white-space: pre-wrap;
-      word-break: break-all;
       margin: 0;
     }
     .pub-bibtex .copy-notice {
-      font-family: var(--sans);
-      font-size: 0.72rem;
-      color: var(--accent);
+      font-size: 0.85em;
+      color: #800000;
       margin-top: 4px;
       opacity: 0;
       transition: opacity 0.3s;
     }
     .pub-bibtex .copy-notice.show { opacity: 1; }
-
-    /* — Footer — */
-    footer {
-      margin-top: var(--space-xl);
-      padding-top: var(--space-md);
-      border-top: 1px solid var(--border);
-      font-family: var(--sans);
-      font-size: 0.75rem;
-      color: var(--fg-faint);
-    }
-    footer a { color: var(--fg-faint); }
-
-    /* — Responsive — */
-    @media (max-width: 600px) {
-      .container { padding: var(--space-lg) var(--space-md); }
-      .name { font-size: 1.6rem; }
-      nav { gap: var(--space-md); flex-wrap: wrap; }
+    a.toggle-btn { cursor: pointer; }
+    @media (max-width: 500px) {
+      .header-top { flex-direction: column; }
+      .header-top img { width: 110px; height: 110px; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
 
-    <header>
-      <div class="header-top">
-        <img src="/public/img/portrait.jpg" alt="Yichen Wang" class="portrait">
-        <div class="header-info">
-      <div class="name">Yichen Wang</div>
-      <div class="affiliation">
-        <a href="https://www.uchicago.edu/">The University of Chicago</a><br>
-        <a href="https://cns.uchicago.edu/">PhD Program in Computational Neuroscience</a><br>
-        <a href="https://neuroscience.uchicago.edu/GrossmanCenter">Grossman Center for Quantitative Biology and Human Behavior</a><br>
-        <a href="https://neurobiology.uchicago.edu/">Department of Neurobiology</a><br>
-        5812 South Ellis Ave. MC 0912, Suite P-400<br>
-        Chicago, IL 60637
-      </div>
-      <!-- Email is reversed for spam protection -->
-      <div class="email">ude.ogacihcu@wnehciy</div>
-        </div><!-- /.header-info -->
-      </div><!-- /.header-top -->
-      <p class="bio">
-        I am a PhD student at the University of Chicago, advised by
-        <a href="https://neurobiology.uchicago.edu/faculty/brent-doiron-phd">Dr. Brent Doiron</a>.
-        During undergrad, I worked at the
-        <a href="https://www.simonsfoundation.org/flatiron/center-for-computational-neuroscience/">Flatiron Institute</a>
-        with <a href="https://cnchou.github.io/publications/">Dr. Chi-Ning Chou</a> and <a href="https://sites.google.com/site/sueyeonchung">Dr. SueYeon Chung</a>.
-        I received my undergraduate degree in Physics and Mathematics from UCLA.
-      </p>
-      <p class="bio">
-        My research focuses on understanding how a nervous system interacts with our physical world, and vice versa. 
-      </p>
+<div class="header-top">
+  <img src="/public/img/portrait.jpg" alt="Yichen Wang">
+  <div class="header-info">
+    <p><strong>Yichen Wang</strong><br>
+    <a href="https://cns.uchicago.edu/">PhD Program in Computational Neuroscience</a><br>
+    <a href="https://neuroscience.uchicago.edu/GrossmanCenter">Grossman Center for Quantitative Biology and Human Behavior</a><br>
+    <a href="https://neurobiology.uchicago.edu/">Department of Neurobiology</a><br>
+    <a href="https://www.uchicago.edu/">The University of Chicago</a><br>
+    5812 South Ellis Ave. MC 0912, Suite P-400, Chicago, IL 60637<br>
+    <span style="direction: rtl; unicode-bidi: bidi-override;">ude.ogacihcu@wnehciy</span></p>
+  </div>
+</div>
 
-      <div class="social-links">
-        <a href="https://scholar.google.com/citations?user=xT3P8PsAAAAJ&hl=en" target="_blank">Google Scholar</a>
-        <a href="https://github.com/yuesha-yc" target="_blank">GitHub</a>
-        <a href="https://x.com/yichenwang03" target="_blank">X</a>
-        <a href="https://bsky.app/profile/yichenwang.bsky.social" target="_blank">Bluesky</a>
-        <a href="https://www.linkedin.com/in/yichen-wang-4750461bb/" target="_blank">LinkedIn</a>
-      </div>
+<p>I study how a nervous system interacts with our physical world, advised by
+<a href="https://neurobiology.uchicago.edu/faculty/brent-doiron-phd">Dr. Brent Doiron</a>.
+During undergrad, I worked at the
+<a href="https://www.simonsfoundation.org/flatiron/center-for-computational-neuroscience/">Flatiron Institute</a>
+with <a href="https://cnchou.github.io/publications/">Dr. Chi-Ning Chou</a> and <a href="https://sites.google.com/site/sueyeonchung">Dr. SueYeon Chung</a>.
+I received my undergraduate degree in Physics and Mathematics from UCLA.</p>
 
-      <nav>
-        <a href="#publications">publications</a>
-        <a href="#posters">posters</a>
-        <a href="#code">code</a>
-      </nav>
-    </header>
+<p>&rarrb;<a href="#publications">publications</a>
+&rarrb;<a href="#posters">posters</a>
+&rarrb;<a href="#code">code</a>
+&ensp;|&ensp;
+<a href="https://scholar.google.com/citations?user=xT3P8PsAAAAJ&hl=en">Google Scholar</a>
+&middot; <a href="https://github.com/yuesha-yc">GitHub</a>
+&middot; <a href="https://x.com/yichenwang03">X</a>
+&middot; <a href="https://bsky.app/profile/yichenwang.bsky.social">Bluesky</a>
+&middot; <a href="https://www.linkedin.com/in/yichen-wang-4750461bb/">LinkedIn</a></p>
 
-    <!-- ═══════════════════════════════════════════
-         PUBLICATIONS
-    ════════════════════════════════════════════ -->
-    <section id="publications">
-      <h2>Publications <a href="https://scholar.google.com/citations?user=xT3P8PsAAAAJ&hl=en" target="_blank">(Google Scholar)</a></h2>
+<h1 id="publications">Publications <small>(also on <a href="https://scholar.google.com/citations?user=xT3P8PsAAAAJ&hl=en">Google Scholar</a>)</small></h1>
 
-      <div class="pub">
-        <div class="pub-authors">Chi-Ning Chou*, Hang Le*, <strong>Yichen Wang</strong> &amp; SueYeon Chung (2025).</div>
-        <div class="pub-title">Feature Learning beyond the Lazy-Rich Dichotomy: Insights from Representational Geometry.</div>
-        <div class="pub-venue">International Conference on Machine Learning (ICML) 2025.</div>
-        <div class="pub-links">
-          [ <a href="https://arxiv.org/abs/2503.18114" target="_blank">arXiv</a> <span class="sep">|</span> <a href="https://icml.cc/virtual/2025/poster/44480" target="_blank">conference</a> <span class="sep">|</span> <a class="toggle-btn" onclick="toggleExpand(this, 'abstract')">abstract</a> <span class="sep">|</span> <a class="toggle-btn" onclick="toggleExpand(this, 'bibtex')">bibtex</a> ]
-        </div>
-        <div class="pub-note">Spotlight Presentation.</div>
-        <div class="pub-abstract">
-          Integrating task-relevant information into neural representations is a fundamental ability of both biological and artificial intelligence systems. Recent theories have categorized learning into two regimes: the rich regime, where neural networks actively learn task-relevant features, and the lazy regime, where networks behave like random feature models. Yet this simple lazy-rich dichotomy overlooks a diverse underlying taxonomy of feature learning, shaped by differences in learning algorithms, network architectures, and data properties. To address this gap, we introduce an analysis framework to study feature learning via the geometry of neural representations. Rather than inspecting individual learned features, we characterize how task-relevant representational manifolds evolve throughout the learning process. We show, in both theoretical and empirical settings, that as networks learn features, task-relevant manifolds untangle, with changes in manifold geometry revealing distinct learning stages and strategies beyond the lazy-rich dichotomy. This framework provides novel insights into feature learning across neuroscience and machine learning, shedding light on structural inductive biases in neural circuits and the mechanisms underlying out-of-distribution generalization.
-        </div>
-        <div class="pub-bibtex">
-          <pre>@inproceedings{chou2025feature,
+<p>
+Chi-Ning Chou*, Hang Le*, <strong>Yichen Wang</strong> &amp; SueYeon Chung (2025).
+Feature Learning beyond the Lazy-Rich Dichotomy: Insights from Representational Geometry.
+<em>International Conference on Machine Learning (ICML)</em> 2025. Spotlight Presentation.
+<small>[&nbsp;<a href="https://arxiv.org/abs/2503.18114">arXiv</a>&nbsp;| <a href="https://icml.cc/virtual/2025/poster/44480">conference</a>&nbsp;| <a class="toggle-btn" onclick="toggleExpand(this, 'abstract')">abstract</a>&nbsp;| <a class="toggle-btn" onclick="toggleExpand(this, 'bibtex')">bibtex</a>&nbsp;]</small>
+</p>
+<div class="pub-abstract">
+Integrating task-relevant information into neural representations is a fundamental ability of both biological and artificial intelligence systems. Recent theories have categorized learning into two regimes: the rich regime, where neural networks actively learn task-relevant features, and the lazy regime, where networks behave like random feature models. Yet this simple lazy-rich dichotomy overlooks a diverse underlying taxonomy of feature learning, shaped by differences in learning algorithms, network architectures, and data properties. To address this gap, we introduce an analysis framework to study feature learning via the geometry of neural representations. Rather than inspecting individual learned features, we characterize how task-relevant representational manifolds evolve throughout the learning process. We show, in both theoretical and empirical settings, that as networks learn features, task-relevant manifolds untangle, with changes in manifold geometry revealing distinct learning stages and strategies beyond the lazy-rich dichotomy. This framework provides novel insights into feature learning across neuroscience and machine learning, shedding light on structural inductive biases in neural circuits and the mechanisms underlying out-of-distribution generalization.
+</div>
+<div class="pub-bibtex">
+<pre>@inproceedings{chou2025feature,
   title={Feature Learning beyond the Lazy-Rich Dichotomy: Insights from Representational Geometry},
   author={Chou, Chi-Ning and Le, Hang and Wang, Yichen and Chung, SueYeon},
   booktitle={International Conference on Machine Learning (ICML)},
   year={2025}
 }</pre>
-          <div class="copy-notice">Copied to clipboard!</div>
-        </div>
-      </div>
+<div class="copy-notice">Copied to clipboard!</div>
+</div>
 
-    </section>
+<h1 id="posters">Posters</h1>
 
-    <!-- ═══════════════════════════════════════════
-         POSTERS
-    ════════════════════════════════════════════ -->
-    <section id="posters">
-      <h2>Posters</h2>
+<p>
+Chi-Ning Chou*, Hang Le*, <strong>Yichen Wang</strong> &amp; SueYeon Chung (2024).
+Understanding Feature Learning in Neural Networks via Manifold Capacity and Effective Geometry.
+<em>Cognitive and Computational Neuroscience Conference (CCN)</em> 2024.
+<small>[&nbsp;<a href="https://2024.ccneuro.org/pdf/488_Paper_authored_Learning_Geometry__CCN_-(1).pdf">pdf</a>&nbsp;]</small>
+</p>
 
-      <div class="pub">
-        <div class="pub-authors">Chi-Ning Chou*, Hang Le*, <strong>Yichen Wang</strong> &amp; SueYeon Chung (2024).</div>
-        <div class="pub-title">Understanding Feature Learning in Neural Networks via Manifold Capacity and Effective Geometry.</div>
-        <div class="pub-venue">Cognitive and Computational Neuroscience Conference (CCN) 2024.</div>
-      </div>
+<p>
+<strong>Yichen Wang</strong>, Chi-Ning Chou, Artem Kirsanov &amp; SueYeon Chung (2024).
+Studying How Neural Networks Learn Computationally Hierarchical Representations Using Manifold Capacity.
+<em>Flatiron Institute Summer Poster Session</em> 2024.
+<small>[&nbsp;<a href="/yichen_wang_2024_summer_poster.pdf">pdf</a>&nbsp;]</small>
+</p>
 
-      <div class="pub">
-        <div class="pub-authors"><strong>Yichen Wang</strong>, Chi-Ning Chou, Artem Kirsanov &amp; SueYeon Chung (2024).</div>
-        <div class="pub-title">Studying How Neural Networks Learn Computationally Hierarchical Representations Using Manifold Capacity.</div>
-        <div class="pub-venue">Flatiron Institute Summer Poster Session 2024.</div>
-      </div>
+<p>
+<strong>Yichen Wang</strong>, Chi-Ning Chou &amp; SueYeon Chung (2023).
+Exploring the Geometry of Neural Manifolds with Latent Structures.
+<em>Flatiron Institute Summer Poster Session</em> 2023.
+<small>[&nbsp;<a href="/yichen_wang_2023_summer_poster.pdf">pdf</a>&nbsp;]</small>
+</p>
 
-      <div class="pub">
-        <div class="pub-authors"><strong>Yichen Wang</strong>, Chi-Ning Chou &amp; SueYeon Chung (2023).</div>
-        <div class="pub-title">Exploring the Geometry of Neural Manifolds with Latent Structures.</div>
-        <div class="pub-venue">Flatiron Institute Summer Poster Session 2023.</div>
-      </div>
+<p>
+Y. Wang, S. Brosler, P. Ahmadi, T. Kuli&#324;ski, S. Sarkar, T. Suresh &amp; H. Yan (2022).
+Frequency specific features representing categorical face perception.
+<em>Neuromatch Academy Computational Neuroscience Summer Program</em> 2022.
+</p>
 
-      <div class="pub">
-        <div class="pub-authors">Y. Wang, S. Brosler, P. Ahmadi, T. Kuli&#324;ski, S. Sarkar, T. Suresh &amp; H. Yan (2022).</div>
-        <div class="pub-title">Frequency specific features representing categorical face perception.</div>
-        <div class="pub-venue">Neuromatch Academy Computational Neuroscience Summer Program 2022.</div>
-      </div>
+<p>
+Y. Wang, G. Ordonez, D. Murillo, A. Gutierrez, C. Chavez, D. Espino, M. Khosla, K. Tsujimoto, A. Blaisdell &amp; K. Arisaka (2022).
+Correlation between alpha wave frequency and eccentricity dependent reaction time.
+<em>UCLA Undergraduate Research Week</em> 2022.
+</p>
 
-      <div class="pub">
-        <div class="pub-authors">Y. Wang, G. Ordonez, D. Murillo, A. Gutierrez, C. Chavez, D. Espino, M. Khosla, K. Tsujimoto, A. Blaisdell &amp; K. Arisaka (2022).</div>
-        <div class="pub-title">Correlation between alpha wave frequency and eccentricity dependent reaction time.</div>
-        <div class="pub-venue">UCLA Undergraduate Research Week 2022.</div>
-      </div>
+<h1 id="code">Code</h1>
 
-    </section>
+<p>See <a href="https://github.com/yuesha-yc">GitHub</a> for projects and code.</p>
 
-    <!-- ═══════════════════════════════════════════
-         CODE
-    ════════════════════════════════════════════ -->
-    <section id="code">
-      <h2>Code</h2>
-
-      <p style="font-family: var(--sans); font-size: 0.88rem; color: var(--fg-dim);">
-        See <a href="https://github.com/yuesha-yc" target="_blank" style="color: var(--accent);">GitHub</a> for projects and code.
-      </p>
-    </section>
-
-    <footer>
-      &copy; 2026 Yichen Wang. Hosted on <a href="https://pages.github.com">GitHub Pages</a>.
-    </footer>
-
-  </div>
-  <script>
-    function toggleExpand(btn, type) {
-      var pub = btn.closest('.pub');
-      var target = pub.querySelector('.pub-' + type);
-      var isOpen = target.classList.contains('open');
-      // close all open panels in this pub
-      pub.querySelectorAll('.pub-abstract, .pub-bibtex').forEach(function(el) {
-        el.classList.remove('open');
+<script>
+function toggleExpand(btn, type) {
+  var container = btn.closest('p');
+  var target = container.nextElementSibling;
+  // find the right one (abstract or bibtex)
+  while (target && !target.classList.contains('pub-' + type)) {
+    target = target.nextElementSibling;
+  }
+  if (!target) return;
+  var isOpen = target.classList.contains('open');
+  // close siblings
+  var sib = container.nextElementSibling;
+  while (sib && (sib.classList.contains('pub-abstract') || sib.classList.contains('pub-bibtex'))) {
+    sib.classList.remove('open');
+    sib = sib.nextElementSibling;
+  }
+  if (!isOpen) {
+    target.classList.add('open');
+    if (type === 'bibtex') {
+      var text = target.querySelector('pre').textContent;
+      navigator.clipboard.writeText(text).then(function() {
+        var notice = target.querySelector('.copy-notice');
+        notice.classList.add('show');
+        setTimeout(function() { notice.classList.remove('show'); }, 2000);
       });
-      if (!isOpen) {
-        target.classList.add('open');
-        if (type === 'bibtex') {
-          var text = target.querySelector('pre').textContent;
-          navigator.clipboard.writeText(text).then(function() {
-            var notice = target.querySelector('.copy-notice');
-            notice.classList.add('show');
-            setTimeout(function() { notice.classList.remove('show'); }, 2000);
-          });
-        }
-      }
     }
-  </script>
+  }
+}
+</script>
+
 </body>
 </html>
